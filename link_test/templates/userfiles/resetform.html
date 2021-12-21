@@ -1,0 +1,9 @@
+{%  extends 'base.html' %}
+
+{% block content %}<br><br><br><br>
+    <form action="{% url 'user:reset' %}" method="post">
+        {% csrf_token %}
+        Username: <input type="text" name="username">
+        <button type="submit">Continue</button>
+    </form>
+{% endblock %}

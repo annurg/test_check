@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="courses">
+		<div class="container">
+			<div class="row courses_row">
+				<!-- Course -->
+                {% for i in courses %}
+				<div class="col-lg-4 course_col">
+					<div class="course">
+						<div class="course_image"><img src="{{i.icon.url}} " height="100px" width="400px"/></div>
+						<div class="course_body">
+							<div class="course_title"><a href="{% url 'edu:topic' i.course_name %}">{{ i.course_name }}</a></div>
+							<div class="course_info">
+
+							</div>
+							<div class="course_text">
+								<p align="justify" style="word-wrap: break-word">{{i.description}}</p>
+							</div>
+						</div>
+						<div class="course_footer d-flex flex-row align-items-center justify-content-start">
+							<div class="course_students"><i class="fa fa-user" aria-hidden="true"></i><span>{{ i.courses.all.count }}</span></div>
+							<div class="course_rating ml-auto"><i class="fa fa-star" aria-hidden="true"></i><span>4,5</span></div>
+							<div class="course_mark course_free trans_200"><a href=/gateaway/Home/?m={{i.id}}>view</a></div>
+						</div>
+					</div>
+				</div>
+                {% endfor %}</div></div></div>
+{% endblock %}

@@ -1,0 +1,26 @@
+
+{% block content %}
+    <center>
+        {% if not user.is_authenticated %}
+            <form method="post">
+                <div >
+                {% csrf_token %}
+                <table>
+                    {% for field in form %}
+                        <tr><td>
+                            <h3>{{ field.label }}</h3></td><td>{{ field }}</td><br>
+                            {% for error in field.errors %}<p style="color: red">{{ error }}</p>{% endfor %}
+                            {% for i in field.help_text %}<p style="display: none"></p>{% endfor %}</tr>
+                    {% endfor %}
+                </table>
+                <button type="submit">Sign up</button>
+
+                </div>
+            </form>
+            Already a user?<a href="{% url 'login' %}">Login</a>
+        {% else %}
+            <p>You are already logged in.....</p>
+        {% endif %}
+    </center>
+<br><br><br><br><br><br>
+{% endblock %}

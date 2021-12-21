@@ -1,0 +1,33 @@
+{% block content %}
+<title>Login</title></head>
+<br><br><br><br><br>
+<body>
+<div class="signup-form">
+    <form method="post">
+		<h2>LOGIN</h2>
+                {% if not user.is_authenticated %}
+		<p class="hint-text"></p>
+        <div class="form-group">
+			<div class="row">
+
+                  {% csrf_token %}<br>
+                    username:&nbsp;<input class="form-control" type="text" name="username">
+                    password:&nbsp;<input class="form-control" type="password" name="password">
+
+
+			</div>
+        </div>
+
+		<div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg btn-block">login</button>
+        </div>
+    </form>
+    <div class="text-center">Forgot Password? <a href="#">Reset</a></div>
+	<div class="text-center">Dont have an account? <a href="{% url 'register' %}">Register</a></div>
+    {% else %}
+        <p>You are already logged in........</p>
+    {% endif %}
+</div>
+</body>
+</html>
+{% endblock %}

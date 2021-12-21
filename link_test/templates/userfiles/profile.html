@@ -1,0 +1,29 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+{% block content %}
+<center>
+   {# {% if user.is_authenticated %}#}
+        <form method="post">
+            <div>
+                {% csrf_token %}
+                <table><td style="font-size : 20px"><u>Update Detail's</u></td><br><br>
+                    {% for field in form %}
+                        <tr><td>
+                            <h3>{{ field.label }}</h3></td><td>{{ field }}</td><br>
+                            {% for error in field.errors %}<p style="color: red">{{ error }}</p>{% endfor %}
+                            {% for i in field.help_text %}<p style="display: none"></p>{% endfor %}</tr>
+                    {% endfor %}
+                </table><br>
+        <button type="submit">Update</button>
+            </div>
+        </form>
+        <a href="{% url 'logout' %}">logout</a>
+   {# {% endif %}#}
+
+</center>
+<br><br><br>{% endblock %}
+</html>
